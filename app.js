@@ -44,7 +44,7 @@ const questions = () => {
         }    
         // questions specific to the type of employee
     ]).then(function (data) {
-        if (data.employeeType === "Intern") {
+        if (data.role === "Intern") {
             inquirer.prompt([
                 {
                     type: "input",
@@ -60,7 +60,7 @@ const questions = () => {
                 employeeCatalog.push(addedIntern);
             })
         }
-        if (data.employeeType === "Engineer") {
+        if (data.role === "Engineer") {
             inquirer.prompt([
                 {
                     type: "input",
@@ -70,15 +70,12 @@ const questions = () => {
                 }
             ]).then(function (engineerEvidence) {
                 // make a new engineer with what the user inputs
-                // https://www.w3schools.com/jsref/jsref_push.asp
-                // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
-                // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new
                 const addedEngineer = new Engineer(data.name, data.id, data.email, engineerEvidence.github);
                 // push the new manager to the employee array
                 employeeCatalog.push(addedEngineer);
             });
         }
-        if (data.employeeType === "Manager") {
+        if (data.role === "Manager") {
             inquirer.prompt([
                 {
                     type: "input",
@@ -88,9 +85,6 @@ const questions = () => {
                 }
             ]).then(function (managerMetadata) {
                 // make a new Manager with what the user inputs
-                // https://www.w3schools.com/jsref/jsref_push.asp
-                // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
-                // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new
                 const addedManager = new Manager(data.name, data.id, data.email, managerMetadata.officeNumber);
                 employeeCatalog.push(addedManager);
             })
