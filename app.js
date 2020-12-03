@@ -8,7 +8,8 @@ const fs = require("fs");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-const render = require("./lib/htmlRenderer");
+const render = require("./lib/htmlRenderer.js");
+// Where is this being used?
 const Choices = require("inquirer/lib/objects/choices");
 
 
@@ -41,3 +42,10 @@ const questions = [
         choices: ["Engineer", "Intern", "Manager"]
     }
 ]
+// Write a function that ask questions related to their roles
+// write your code to ask different questions via inquirer depending on employee type.
+
+// make sure to build out your classes first! Remember that your Manager, Engineer, 
+// and Intern classes should all extend from a class named Employee
+
+// make a function that allows you to create a HTML file that displays the employee data
