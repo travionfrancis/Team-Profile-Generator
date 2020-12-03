@@ -21,31 +21,30 @@ const employeeCatalog = [];
 // Asking questions to ask user about their status 
 const questions = () => {
     inquirer.prompt([
-    {
-        type: "input",
-        name: "name",
-        message: "Name of the Employee?"
-    },
-    {
-        type: "list",
-        name: "role",
-        message: "Role of the Employee?",
-        choices: ["Engineer", "Intern", "Manager"],
-    },
-    {
-        type: "input",
-        name: "id",
-        message: "ID Number of the Employee?"
-    },
-    {
-        type: "input",
-        name: "email",
-        messages: "Email Address of the Employee?"
-    }
-    // start the different questions now, with if and else statements
-    ]).then(function (response) {
-        if (response.role === "Intern") {
-            // ask Question with a prompt
+        {
+            type: "input",
+            name: "name",
+            message: "Name of the Employee?"
+        },
+        {
+            type: "list",
+            name: "role",
+            message: "Role of the Employee?",
+            choices: ["Engineer", "Intern", "Manager"],
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "ID Number of the Employee?"
+        },
+        {
+            type: "input",
+            name: "email",
+            messages: "Email Address of the Employee?"
+        }    
+        // questions specific to the type of employee
+    ]).then(function (data) {
+        if (data.employeeType === "Intern") {
             inquirer.prompt([
                 {
                     type: "input",
@@ -61,24 +60,43 @@ const questions = () => {
                 employeeCatalog.push(addedIntern);
             })
         }
+        if (data.employeeType === "Engineer") {
+            inquirer.prompt([
+                {
+                    type: "input",
+                    name: "github",
+                    message: "Github Username of Engineer?",
+                    
+                }
+            ]).then(function (engineerEvidence) {
+                // make a new engineer with what the user inputs
+                // https://www.w3schools.com/jsref/jsref_push.asp
+                // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
+                // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new
+                const addedEngineer = new Engineer(data.name, data.id, data.email, engineerEvidence.github);
+                // push the new manager to the employee array
+                employeeCatalog.push(addedEngineer);
+            });
+        }
+        if (data.employeeType === "Manager") {
+            inquirer.prompt([
+                {
+                    type: "input",
+                    name: "officeNumber",
+                    message: "Office Number of Manager?"
+                    
+                }
+            ]).then(function (managerMetadata) {
+                // make a new Manager with what the user inputs
+                // https://www.w3schools.com/jsref/jsref_push.asp
+                // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
+                // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new
+                const addedManager = new Manager(data.name, data.id, data.email, managerMetadata.officeNumber);
+                employeeCatalog.push(addedManager);
+            })
+        }
     })
 }
-
-
-
-
-// will have to 
-//  if (response.role === "Intern") {
-    // inquirer.prompt([
-    //     {
-    //         type: "input",
-    //         name: "school",
-    //         message: "School of the Intern?"
-    //     }
-
-
-
-
 
 
 // only way to run it
