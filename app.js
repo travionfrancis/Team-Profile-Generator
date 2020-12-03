@@ -19,11 +19,18 @@ const Choices = require("inquirer/lib/objects/choices");
 const employeeCatalog = []; 
 
 // Asking questions to ask user about their status 
-const questions = [
+const questions = () => {
+    inquirer.prompt([
     {
         type: "input",
         name: "name",
         message: "Name of the Employee?"
+    },
+    {
+        type: "list",
+        name: "role",
+        message: "Role of the Employee?",
+        choices: ["Engineer", "Intern", "Manager"],
     },
     {
         type: "input",
@@ -34,15 +41,13 @@ const questions = [
         type: "input",
         name: "email",
         messages: "Email Address of the Employee?"
-    },
-    {
-        type: "list",
-        name: "role",
-        message: "Role of the Employee?",
-        choices: ["Engineer", "Intern", "Manager"]
     }
-]
+    // start the different questions now, with if and else statements
+    ]).then(function (response) {
+        if(response.role) 
 
+    })
+}
 // only way to run it
 questions();
 // Write a function that ask questions related to their roles
