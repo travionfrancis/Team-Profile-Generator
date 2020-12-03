@@ -44,10 +44,43 @@ const questions = () => {
     }
     // start the different questions now, with if and else statements
     ]).then(function (response) {
-        if(response.role) 
-
+        if (response.role === "Intern") {
+            // ask Question with a prompt
+            inquirer.prompt([
+                {
+                    type: "input",
+                    name: "school",
+                    message: "School of the Intern?"
+                }
+            ]).then(function (internInfo) {
+                // make a new intern with what the user inputs
+                // https://www.w3schools.com/jsref/jsref_push.asp
+                // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
+                // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new
+                const addedIntern = new Intern(data.name, data.id, data.email, internInfo.school);
+                employeeCatalog.push(addedIntern);
+            })
+        }
     })
 }
+
+
+
+
+// will have to 
+//  if (response.role === "Intern") {
+    // inquirer.prompt([
+    //     {
+    //         type: "input",
+    //         name: "school",
+    //         message: "School of the Intern?"
+    //     }
+
+
+
+
+
+
 // only way to run it
 questions();
 // Write a function that ask questions related to their roles
