@@ -42,10 +42,18 @@ const questions = [
         choices: ["Engineer", "Intern", "Manager"]
     }
 ]
+
+// only way to run it
+questions();
 // Write a function that ask questions related to their roles
+// changing the questions into a prompt would help
+// https://www.npmjs.com/package/inquirer just like the README gen
 // write your code to ask different questions via inquirer depending on employee type.
 
 // make sure to build out your classes first! Remember that your Manager, Engineer, 
 // and Intern classes should all extend from a class named Employee
 
-// make a function that allows you to create a HTML file that displays the employee data
+// Make a function that allows you to create a HTML file that displays the employee data
+// This probably isn't what the line above means but ill save for now https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createHTMLDocument
+// its prob more along these lines https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback
+// Just in case https://www.npmjs.com/package/create-html
