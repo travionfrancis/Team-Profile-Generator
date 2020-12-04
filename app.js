@@ -10,7 +10,6 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer.js");
 // Where is this being used?
-const Choices = require("inquirer/lib/objects/choices");
 
 
 // Write code to use inquirer to gather information about the development team members,
@@ -92,7 +91,22 @@ const questions = () => {
     })
 }
 
+// Make a function that allows you to create a HTML file that displays the employee data
+// This probably isn't what the line above means but ill save for now https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createHTMLDocument
+// its prob more along these lines https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback
+// Just in case https://www.npmjs.com/package/create-html
 
+function createTeam() {
+    fs.writeFile('team.html', render(employeeCatalog), function (err) {
+        if (err) {
+            return console.log("Bad Job!");
+        }
+        console.log("It Worked!");
+    }
+}
+    
+    
+    
 // only way to run it
 questions();
 // Write a function that ask questions related to their roles
@@ -103,7 +117,4 @@ questions();
 // make sure to build out your classes first! Remember that your Manager, Engineer, 
 // and Intern classes should all extend from a class named Employee
 
-// Make a function that allows you to create a HTML file that displays the employee data
-// This probably isn't what the line above means but ill save for now https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createHTMLDocument
-// its prob more along these lines https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback
-// Just in case https://www.npmjs.com/package/create-html
+
