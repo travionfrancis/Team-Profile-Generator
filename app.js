@@ -100,7 +100,7 @@ const questions = () => {
 
 
 
-
+// Problem with running this function
 function createTeam() {
     const htmlMain = fs.readFileSync("templates/main.html");
     teamHTML = eval('`'+ htmlMain +'`');
@@ -118,6 +118,7 @@ function createTeam() {
     
 // only way to run it
 questions();
+
 // Write a function that ask questions related to their roles
 // changing the questions into a prompt would help
 // https://www.npmjs.com/package/inquirer just like the README gen
