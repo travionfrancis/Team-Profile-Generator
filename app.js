@@ -1,12 +1,13 @@
-const Manager = require("./lib/Manager");
-const Engineer = require("./lib/Engineer");
-const Intern = require("./lib/Intern");
+const fs = require("fs");
 const inquirer = require("inquirer");
 const path = require("path");
-const fs = require("fs");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
+
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
 const render = require("./lib/htmlRenderer.js");
 // Where is this being used?
@@ -16,6 +17,7 @@ const render = require("./lib/htmlRenderer.js");
 // and to create objects for each team member (using the correct classes as blueprints!)
 
 const employeeCatalog = []; 
+const teamHTML = "";
 
 // Asking questions to ask user about their status 
 const questions = () => {
@@ -96,8 +98,15 @@ const questions = () => {
 // its prob more along these lines https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback
 // Just in case https://www.npmjs.com/package/create-html
 
+
+
+
 function createTeam() {
-    fs.writeFile('team.html', render(employeeCatalog), function (err) {
+    const htmlMain = fs.readFileSync("templates/main.html");
+    teamHTML = eval('`'+ htmlMain +'`');
+
+
+    fs.writeFile('result/team.html', render(employeeCatalog), function (err) {
         if (err) {
             return console.log("Bad Job!");
         }
