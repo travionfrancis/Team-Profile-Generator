@@ -101,18 +101,17 @@ const questions = () => {
 
 
 // Problem with running this function
-function createTeam() {
-    const htmlMain = fs.readFileSync("templates/main.html");
-    teamHTML = eval('`'+ htmlMain +'`');
+const htmlMain = fs.readFileSync("templates/main.html");
+teamHTML = eval('`'+ htmlMain +'`');
 
 
-    fs.writeFile('result/team.html', render(employeeCatalog), function (err) {
-        if (err) {
-            return console.log("Bad Job!");
-        }
-        console.log("It Worked!");
+fs.writeFile('result/team.html', render(employeeCatalog), function (err) {
+    if (err) {
+        return console.log("Bad Job!");
     }
-}
+    console.log("It Worked!");
+};
+
     
     
     
