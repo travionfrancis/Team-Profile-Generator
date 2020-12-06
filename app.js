@@ -5,9 +5,9 @@ const path = require("path");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-const Manager = require("./lib/Manager");
-const Engineer = require("./lib/Engineer");
-const Intern = require("./lib/Intern");
+const Manager = require("./lib/Manager.js");
+const Engineer = require("./lib/Engineer.js");
+const Intern = require("./lib/Intern.js");
 
 const render = require("./lib/htmlRenderer.js");
 // Where is this being used?
@@ -16,9 +16,9 @@ const render = require("./lib/htmlRenderer.js");
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
+
 const employeeCatalog = []; 
 let teamHTML = "";
-
 // Asking questions to ask user about their status 
 const questions = () => {
     inquirer.prompt([
@@ -112,6 +112,9 @@ const addEmployee = () => {
             message: "Add another Employee?"
         }
     ]).then(function (data) {
+        if (data.add === true) {
+            questions();
+        }
     })
 }
 
@@ -131,7 +134,7 @@ fs.writeFile('result/team.html', render(employeeCatalog), function (err) {
     
     
 // only way to run it
-console.log("welcome to Team Builder! An engineering team consists of a manager, and any number of engineers and interns.")
+console.log("Welcome to Team Builder! An engineering team consists of a manager, and any number of engineers and interns. Please Enter the Employee's information with the following questions")
 questions();
 
 // Write a function that ask questions related to their roles
