@@ -17,7 +17,7 @@ const render = require("./lib/htmlRenderer.js");
 // and to create objects for each team member (using the correct classes as blueprints!)
 
 const employeeCatalog = []; 
-const teamHTML = "";
+let teamHTML = "";
 
 // Asking questions to ask user about their status 
 const questions = () => {
@@ -109,13 +109,13 @@ fs.writeFile('result/team.html', render(employeeCatalog), function (err) {
     if (err) {
         return console.log("Bad Job!");
     }
-    console.log("It Worked!");
-};
+});
 
     
     
     
 // only way to run it
+console.log("welcome to Team Builder! An engineering team consists of a manager, and any number of engineers and interns.")
 questions();
 
 // Write a function that ask questions related to their roles
