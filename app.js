@@ -59,6 +59,7 @@ const questions = () => {
                 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new
                 const addedIntern = new Intern(data.name, data.id, data.email, internInfo.school);
                 employeeCatalog.push(addedIntern);
+                addEmployee();
             })
         }
         if (data.role === "Engineer") {
@@ -74,6 +75,7 @@ const questions = () => {
                 const addedEngineer = new Engineer(data.name, data.id, data.email, engineerEvidence.github);
                 // push the new manager to the employee array
                 employeeCatalog.push(addedEngineer);
+                addEmployee();
             });
         }
         if (data.role === "Manager") {
@@ -88,6 +90,7 @@ const questions = () => {
                 // make a new Manager with what the user inputs
                 const addedManager = new Manager(data.name, data.id, data.email, managerMetadata.officeNumber);
                 employeeCatalog.push(addedManager);
+                addEmployee();
             })
         }
     })
@@ -99,8 +102,11 @@ const questions = () => {
 // Just in case https://www.npmjs.com/package/create-html
 
 
+// function to ask the questions again
 
-// Problem with running this function
+
+
+// Working now
 const htmlMain = fs.readFileSync("templates/main.html");
 teamHTML = eval('`'+ htmlMain +'`');
 
