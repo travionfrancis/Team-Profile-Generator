@@ -104,6 +104,16 @@ const questions = () => {
 
 // function to ask the questions again
 
+const addEmployee = () => {
+    inquirer.prompt([
+        {
+            type: "confirm",
+            name: "anotherOne",
+            message: "Add another Employee?"
+        }
+    ]).then(function (data) {
+    })
+}
 
 
 // Working now
